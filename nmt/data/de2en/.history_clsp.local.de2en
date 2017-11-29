@@ -1,0 +1,5 @@
+2017 Nov 29 Wed 11:33:42 EST login /home/sshea/en600.468/nmt/nmt/data/de2en 17656  cd de2en/
+2017 Nov 29 Wed 11:33:42 EST login /home/sshea/en600.468/nmt/nmt/data/de2en 17657  ls
+2017 Nov 29 Wed 11:33:45 EST login /home/sshea/en600.468/nmt/nmt/data/de2en 17658  mv devtest.de test.de
+2017 Nov 29 Wed 11:33:59 EST login /home/sshea/en600.468/nmt/nmt/data/de2en 17659  mv devtest.en test.en
+2017 Nov 29 Wed 11:33:59 EST login /home/sshea/en600.468/nmt/nmt/data/de2en 17660  ls
