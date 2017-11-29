@@ -12,7 +12,7 @@ def de2en():
     config['src_lang']          = 'de'
     config['trg_lang']          = 'en'
     config['data_dir']          = './nmt/data/de2en'
-    config['log_file']          = sys.stderr
+    config['log_file']          = './nmt/DEBUG.log'
     config['rnn_type']          = ac.LSTM
     config['batch_size']        = 64
     config['num_layers']        = 1
