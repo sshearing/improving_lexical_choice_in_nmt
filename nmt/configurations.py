@@ -36,7 +36,7 @@ def de2en():
     config['score_func_type']   = ac.SCORE_FUNC_GEN
     config['feed_input']        = True
     config['reload']            = True
-    config['validate_freq']     = 0.1
+    config['validate_freq']     = 0.05
     config['save_freq']         = 2000
     config['beam_size']         = 12
     config['beam_alpha']        = 0.8
