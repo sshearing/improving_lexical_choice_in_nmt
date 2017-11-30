@@ -18,8 +18,8 @@ def de2en():
     config['num_layers']        = 1
     config['enc_rnn_size']      = 512
     config['dec_rnn_size']      = 512
-    config['src_embed_size']    = 300
-    config['trg_embed_size']    = 300
+    config['src_embed_size']    = 512
+    config['trg_embed_size']    = 512
     config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
