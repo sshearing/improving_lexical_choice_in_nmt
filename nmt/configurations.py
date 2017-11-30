@@ -2,16 +2,16 @@ from __future__ import print_function
 from __future__ import division
 
 import os
-import sys
 import nmt.all_constants as ac
 
-def de2en():
+def en2de():
     config = {}
-    config['model_name']        = 'de2en'
+
+    config['model_name']        = 'en2de'
     config['save_to']           = './nmt/saved_models/{}'.format(config['model_name'])
-    config['src_lang']          = 'de'
-    config['trg_lang']          = 'en'
-    config['data_dir']          = './nmt/data/de2en'
+    config['src_lang']          = 'en'
+    config['trg_lang']          = 'de'
+    config['data_dir']          = './nmt/data/en2de'
     config['log_file']          = './nmt/DEBUG.log'
     config['rnn_type']          = ac.LSTM
     config['batch_size']        = 64
@@ -20,6 +20,7 @@ def de2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 300
     config['trg_embed_size']    = 300
+    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
