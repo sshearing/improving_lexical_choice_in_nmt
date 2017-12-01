@@ -16,10 +16,10 @@ def dl2el():
     config['rnn_type']          = ac.LSTM
     config['batch_size']        = 64
     config['num_layers']        = 1
-    config['enc_rnn_size']      = 512
-    config['dec_rnn_size']      = 512
-    config['src_embed_size']    = 300
-    config['trg_embed_size']    = 300
+    config['enc_rnn_size']      = 400
+    config['dec_rnn_size']      = 400
+    config['src_embed_size']    = 400
+    config['trg_embed_size']    = 400
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
