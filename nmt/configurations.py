@@ -44,6 +44,8 @@ def dl2el():
     config['val_trans_out']     = os.path.join(config['save_to'], 'validation_trans.txt')
     config['val_beam_out']      = os.path.join(config['save_to'], 'beam_trans.txt')
 
+    return config
+
 def de2en():
     config = {}
     config['model_name']        = 'de2en'
