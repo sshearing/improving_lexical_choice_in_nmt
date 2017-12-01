@@ -2,11 +2,11 @@ from __future__ import print_function
 from __future__ import division
 
 import os
+import sys
 import nmt.all_constants as ac
 
 def dl2el():
     config = {}
-
     config['model_name']        = 'dl2el'
     config['save_to']           = './nmt/saved_models/{}'.format(config['model_name'])
     config['src_lang']          = 'dl'
@@ -16,11 +16,10 @@ def dl2el():
     config['rnn_type']          = ac.LSTM
     config['batch_size']        = 64
     config['num_layers']        = 1
-    config['enc_rnn_size']      = 400
-    config['dec_rnn_size']      = 400
-    config['src_embed_size']    = 400
-    config['trg_embed_size']    = 400
-    config['embed_norm']        = 3.5
+    config['enc_rnn_size']      = 512
+    config['dec_rnn_size']      = 512
+    config['src_embed_size']    = 300
+    config['trg_embed_size']    = 300
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -38,16 +37,17 @@ def dl2el():
     config['feed_input']        = True
     config['reload']            = True
     config['validate_freq']     = 7000
-    config['save_freq']         = 7000
+    config['save_freq']         = 5000
     config['beam_size']         = 12
     config['beam_alpha']        = 0.8
     config['n_best']            = 1
     config['val_trans_out']     = os.path.join(config['save_to'], 'validation_trans.txt')
     config['val_beam_out']      = os.path.join(config['save_to'], 'beam_trans.txt')
 
-    return configdef de2en():
-    config = {}
+    return config
 
+def de2en():
+    config = {}
     config['model_name']        = 'de2en'
     config['save_to']           = './nmt/saved_models/{}'.format(config['model_name'])
     config['src_lang']          = 'de'
@@ -57,11 +57,10 @@ def dl2el():
     config['rnn_type']          = ac.LSTM
     config['batch_size']        = 64
     config['num_layers']        = 1
-    config['enc_rnn_size']      = 450
-    config['dec_rnn_size']      = 450
-    config['src_embed_size']    = 450
-    config['trg_embed_size']    = 450
-    config['embed_norm']        = 3.5
+    config['enc_rnn_size']      = 512
+    config['dec_rnn_size']      = 512
+    config['src_embed_size']    = 300
+    config['trg_embed_size']    = 300
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -104,7 +103,6 @@ def ta2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -147,7 +145,6 @@ def ur2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -190,7 +187,6 @@ def ha2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -233,7 +229,6 @@ def tu2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -276,7 +271,6 @@ def uz2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -319,7 +313,6 @@ def hu2en():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -362,7 +355,6 @@ def en2vi():
     config['dec_rnn_size']      = 512
     config['src_embed_size']    = 512
     config['trg_embed_size']    = 512
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -405,7 +397,6 @@ def en2ja():
     config['dec_rnn_size']      = 768
     config['src_embed_size']    = 768
     config['trg_embed_size']    = 768
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -448,7 +439,6 @@ def en2ja_btec():
     config['dec_rnn_size']      = 768
     config['src_embed_size']    = 768
     config['trg_embed_size']    = 768
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
@@ -491,7 +481,6 @@ def en2de():
     config['dec_rnn_size']      = 1024
     config['src_embed_size']    = 1024
     config['trg_embed_size']    = 1024
-    config['embed_norm']        = 3.5
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
