@@ -5,7 +5,7 @@ import os
 import sys
 import nmt.all_constants as ac
 
-def de2en_lex():
+def dl2el():
     config = {}
     config['model_name']        = 'de2en'
     config['save_to']           = './nmt/saved_models/{}'.format(config['model_name'])
