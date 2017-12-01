@@ -24,6 +24,7 @@ def dl2el():
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
     config['max_epochs']        = 20
+    config['embed_norm']        = 3.5
     config['lr']                = 1.0
     config['lr_decay']          = 0.5
     config['optimizer']         = ac.ADADELTA
