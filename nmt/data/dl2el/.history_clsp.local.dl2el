@@ -1,0 +1,26 @@
+2017 Nov 30 Thu 22:16:52 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18988  cd dl2el/
+2017 Nov 30 Thu 22:16:52 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18989  ls
+2017 Nov 30 Thu 22:16:56 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18990  mv dev.de dev.dl
+2017 Nov 30 Thu 22:16:59 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18991  mv dev.en dev.el
+2017 Nov 30 Thu 22:17:05 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18992  mv test.de test.dl
+2017 Nov 30 Thu 22:17:10 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18993  mv test.en test.el
+2017 Nov 30 Thu 22:17:10 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18994  ls
+2017 Nov 30 Thu 22:17:13 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18995  mv train.de train.dl
+2017 Nov 30 Thu 22:17:27 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18996  mv train.en train.el
+2017 Nov 30 Thu 22:17:29 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18997  git status
+2017 Nov 30 Thu 22:17:50 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18998  git add *
+2017 Nov 30 Thu 22:17:53 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 18999  git status
+2017 Nov 30 Thu 22:18:20 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19000  git rm ../de2en/*
+2017 Nov 30 Thu 22:18:25 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19001  git status
+2017 Nov 30 Thu 22:19:40 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19002  git reset head
+2017 Nov 30 Thu 22:19:43 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19003  git reset HEADD
+2017 Nov 30 Thu 22:19:45 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19004  git reset HEAD
+2017 Nov 30 Thu 22:19:48 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19005  ls
+2017 Nov 30 Thu 22:19:50 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19006  git status
+2017 Nov 30 Thu 22:20:05 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19007  git add *
+2017 Nov 30 Thu 22:20:10 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19008  git status
+2017 Dec 01 Fri 11:26:30 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19052  cd dl2el
+2017 Dec 01 Fri 11:26:30 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19053  ls
+2017 Dec 01 Fri 11:31:59 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19054  emacs train.dl
+2017 Dec 01 Fri 11:32:00 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19055  ls
+2017 Dec 01 Fri 11:32:09 EST login /home/sshea/en600.468/mt-project/nmt/data/dl2el 19056  emacs lex.de

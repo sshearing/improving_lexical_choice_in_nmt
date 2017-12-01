@@ -1,4 +1,5 @@
-![Good friend lol](./images/doraemon_nobita.gif)  
+![Good friend lol](./images/doraemon_nobita.gif)
+Tested with Python 2.7.3 and Tensorflow 1.1
 
 
 Tested with Python 2.7.3 and Tensorflow 1.1  

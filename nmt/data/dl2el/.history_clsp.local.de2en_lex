@@ -1,0 +1,34 @@
+2017 Nov 30 Thu 21:33:36 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18925  cd de2en_lex/
+2017 Nov 30 Thu 21:33:42 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18926  cp ../de2en/* .
+2017 Nov 30 Thu 21:33:43 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18927  ls
+2017 Nov 30 Thu 21:33:48 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18928  rm test.base.no_lex.out
+2017 Nov 30 Thu 21:33:49 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18929  ls
+2017 Nov 30 Thu 21:33:57 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18930  git status
+2017 Nov 30 Thu 21:34:04 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18931  git branch
+2017 Nov 30 Thu 21:34:08 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18932  git checkout master
+2017 Nov 30 Thu 21:34:10 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18933  ls
+2017 Nov 30 Thu 21:34:29 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18938  cd de2en_lex
+2017 Nov 30 Thu 21:39:41 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18939  ls
+2017 Nov 30 Thu 21:45:25 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18940  emacs join.py
+2017 Nov 30 Thu 21:45:37 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18941  python join.py
+2017 Nov 30 Thu 21:45:56 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18942  ls
+2017 Nov 30 Thu 21:46:00 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18943  wc -l train.de
+2017 Nov 30 Thu 21:46:03 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18944  wc -l train.lex.de
+2017 Nov 30 Thu 21:46:15 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18945  wc -l lex.de
+2017 Nov 30 Thu 21:46:25 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18946  emacs join.py
+2017 Nov 30 Thu 21:46:36 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18947  python join.py
+2017 Nov 30 Thu 21:46:39 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18948  wc -l train.lex.de
+2017 Nov 30 Thu 21:46:42 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18949  wc -l train.lex.en
+2017 Nov 30 Thu 21:47:34 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18950  ls
+2017 Nov 30 Thu 21:47:37 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18951  rm *~
+2017 Nov 30 Thu 21:47:38 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18952  ls
+2017 Nov 30 Thu 21:48:54 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18953  rm train.de
+2017 Nov 30 Thu 21:48:56 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18954  rm train.en
+2017 Nov 30 Thu 21:49:00 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18955  mv train.lex.de train.de
+2017 Nov 30 Thu 21:49:04 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18956  mv train.lex.en train.en
+2017 Nov 30 Thu 21:49:04 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18957  ls
+2017 Nov 30 Thu 21:49:09 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18958  git status
+2017 Nov 30 Thu 21:49:17 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18959  git add *
+2017 Nov 30 Thu 21:49:18 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18960  git status
+2017 Nov 30 Thu 21:49:30 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18961  git commit -m "new lex training set"
+2017 Nov 30 Thu 21:49:47 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_lex 18962  git push origin master
