@@ -1,0 +1,19 @@
+2017 Dec 02 Sat 10:58:47 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19257  cd de2en_bp
+2017 Dec 02 Sat 10:58:47 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19258  ls
+2017 Dec 02 Sat 10:58:54 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19259  rm test.base.no_lex.out
+2017 Dec 02 Sat 10:59:01 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19260  rm test.fixnorm_lex.no_lex.out
+2017 Dec 02 Sat 10:59:02 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19261  ls
+2017 Dec 02 Sat 11:04:31 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19261  ls
+2017 Dec 02 Sat 11:04:40 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19262  cp ../dl2el/lex.de lex.de
+2017 Dec 02 Sat 11:04:44 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19263  cp ../dl2el/*.py .
+2017 Dec 02 Sat 11:04:45 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19264  ls
+2017 Dec 02 Sat 11:05:14 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19265  emacs join.py
+2017 Dec 02 Sat 11:05:19 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19266  python join.py
+2017 Dec 02 Sat 11:05:21 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19267  ls
+2017 Dec 02 Sat 11:05:24 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19268  rm *~
+2017 Dec 02 Sat 11:05:27 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19269  cat train.delex
+2017 Dec 02 Sat 11:05:30 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19270  ls
+2017 Dec 02 Sat 11:05:33 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19271  cat train.enlex
+2017 Dec 02 Sat 11:05:37 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19272  wc -enlex
+2017 Dec 02 Sat 11:05:41 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19273  wc -l train.enlex
+2017 Dec 02 Sat 11:05:49 EST login /home/sshea/en600.468/mt-project/nmt/data/de2en_bp 19274  git status
