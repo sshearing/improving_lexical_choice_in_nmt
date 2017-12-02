@@ -169,7 +169,7 @@ class Trainer(object):
         if not lex:
             loss, _ = sess.run([self.train_m.loss, self.train_m.train_op], feed)
         else:
-            loss, _ = sess.rus([self.train_m.loss, self.train_m.train_op_lex], feed)
+            loss, _ = sess.run([self.train_m.loss, self.train_m.train_op_lex], feed)
 
         if self.num_batches_done % 10 == 0:
             sess.run([self.train_m.normalize_trg_embeds, self.train_m.normalize_lex_embeds])
