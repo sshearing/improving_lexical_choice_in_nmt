@@ -92,8 +92,8 @@ class Trainer(object):
                 sess.run([self.train_m.normalize_src_embeds, self.train_m.normalize_trg_embeds, self.train_m.normalize_lex_embeds])
 
                 for e in xrange(self.max_epochs):
-                    for b, batch_data in self.data_manager.get_batch(mode=ac.TRAINING, num_batches=self.num_preload):
-                        self.run_log_save(sess, b, e, batch_data)
+                    for (b, lex), batch_data in self.data_manager.get_batch(mode=ac.TRAINING, num_batches=self.num_preload):
+                        self.run_log_save(sess, b, lex, e, batch_data)
                         self.maybe_validate(sess)
 
                     self.report_epoch(e)
@@ -155,7 +155,7 @@ class Trainer(object):
         self.logger.info(u'Tar: {}'.format(target))
         self.logger.info(u'W: {}'.format(weight))
 
-    def run_log_save(self, sess, b, e, batch_data):
+    def run_log_save(self, sess, b, lex, e, batch_data):
         start = time.time()
         src_inputs, src_seq_lengths, trg_inputs, trg_targets, target_weights = batch_data
         feed = {
@@ -165,7 +165,11 @@ class Trainer(object):
             self.train_m.trg_targets: trg_targets,
             self.train_m.target_weights: target_weights
         }
-        loss, _ = sess.run([self.train_m.loss, self.train_m.train_op], feed)
+
+        if not lex:
+            loss, _ = sess.run([self.train_m.loss, self.train_m.train_op], feed)
+        else:
+            loss, _ = sess.rus([self.train_m.loss, self.train_m.train_op_lex], feed)
 
         if self.num_batches_done % 10 == 0:
             sess.run([self.train_m.normalize_trg_embeds, self.train_m.normalize_lex_embeds])

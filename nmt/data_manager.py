@@ -42,7 +42,9 @@ class DataManager(object):
         self.data_files = {
             ac.TRAINING: {
                 self.src_lang: join(self.data_dir, 'train.{}'.format(self.src_lang)),
-                self.trg_lang: join(self.data_dir, 'train.{}'.format(self.trg_lang))
+                self.trg_lang: join(self.data_dir, 'train.{}'.format(self.trg_lang)),
+                self.src_lang + 'lex': join(self.data_dir, 'train.{}'.format(self.src_lang + 'lex')),
+                self.trg_lang + 'lex': join(self.data_dir, 'train.{}'.format(self.trg_lang + 'lex'))
             },
             ac.VALIDATING: {
                 self.src_lang: join(self.data_dir, 'dev.{}'.format(self.src_lang)),
@@ -55,15 +57,19 @@ class DataManager(object):
         }
         self.length_files = {
             ac.TRAINING: join(self.data_dir, 'train.length'),
+            ac.TRAINING + 'lex': join(self.data_dir, 'train.lex.length'),
             ac.VALIDATING: join(self.data_dir, 'dev.length'),
             ac.TESTING: join(self.data_dir, 'test.length')
         }
         self.clean_files = {
             self.src_lang: join(self.data_dir, 'train.{}.clean-{}'.format(self.src_lang, self.max_src_length)),
-            self.trg_lang: join(self.data_dir, 'train.{}.clean-{}'.format(self.trg_lang, self.max_trg_length))
+            self.trg_lang: join(self.data_dir, 'train.{}.clean-{}'.format(self.trg_lang, self.max_trg_length)),
+            self.src_lang + 'lex': join(self.data_dir, 'train.{}.clean-{}'.format(self.src_lang + 'lex', self.max_src_length)),
+            self.trg_lang + 'lex': join(self.data_dir, 'train.{}.clean-{}'.format(self.trg_lang + 'lex', self.max_trg_length))
         }
         self.ids_files = {
             ac.TRAINING: join(self.data_dir, 'train.ids'),
+            ac.TRAINING + 'lex': join(self.data_dir, 'train.lex.ids'),
             ac.VALIDATING: join(self.data_dir, 'dev.ids'),
             ac.TESTING: join(self.data_dir, 'test.ids')
         }
@@ -76,19 +82,21 @@ class DataManager(object):
 
     def setup(self):
         self.parallel_filter_long_sentences()
+        self.parallel_filter_long_sentences('lex')
         self.create_vocabs(self.src_lang)
         self.create_vocabs(self.trg_lang)
         self.parallel_data_to_token_ids(mode=ac.TRAINING)
+        self.parallel_data_to_token_ids(mode=ac.TRAINING, lex='lex')
         self.parallel_data_to_token_ids(mode=ac.VALIDATING)
 
         if exists(self.data_files[ac.TESTING][self.src_lang]) and exists(self.data_files[ac.TESTING][self.trg_lang]):
             self.parallel_data_to_token_ids(mode=ac.TESTING)
 
-    def parallel_filter_long_sentences(self):
-        src_train_file = self.data_files[ac.TRAINING][self.src_lang]
-        trg_train_file = self.data_files[ac.TRAINING][self.trg_lang]
-        src_train_clean_file = self.clean_files[self.src_lang]
-        trg_train_clean_file = self.clean_files[self.trg_lang]
+    def parallel_filter_long_sentences(self, lex=''):
+        src_train_file = self.data_files[ac.TRAINING][self.src_lang + lex]
+        trg_train_file = self.data_files[ac.TRAINING][self.trg_lang + lex]
+        src_train_clean_file = self.clean_files[self.src_lang + lex]
+        trg_train_clean_file = self.clean_files[self.trg_lang + lex]
         max_src_length = self.max_src_length
         max_trg_length = self.max_trg_length
 
@@ -117,6 +125,7 @@ class DataManager(object):
 
     def create_vocabs(self, lang):
         data_file = self.clean_files[lang]
+        data_file_lex = self.clean_files[lang + 'lex']
         vocab_file = self.vocab_files[lang]
         max_vocab_size = self.vocab_sizes[lang]
 
@@ -135,6 +144,15 @@ class DataManager(object):
 
                 if line.strip():
                     vocab.update(line.strip().split())
+                    
+            with open(data_file_lex, 'r', 'utf-8') as g:
+                for line in g:
+                    count += 1
+                    if count % 10000 == 0:
+                        self.logger.info('   processing line {}'.format(count))
+
+                    if line.strip():
+                        vocab.update(line.strip().split())
 
             vocab_list = ac._START_VOCAB + sorted(vocab, key=vocab.get, reverse=True)
             if len(vocab_list) < max_vocab_size:
@@ -173,19 +191,19 @@ class DataManager(object):
         ivocab = {i: w for w, i in vocab.items()}
         return vocab, ivocab
 
-    def parallel_data_to_token_ids(self, mode=ac.TRAINING):
+    def parallel_data_to_token_ids(self, mode=ac.TRAINING, lex=''):
         src_file = self.data_files[mode][self.src_lang]
         trg_file = self.data_files[mode][self.trg_lang]
         if mode == ac.TRAINING:
             # In training, we use the length-limited data
-            src_file = self.clean_files[self.src_lang]
-            trg_file = self.clean_files[self.trg_lang]
+            src_file = self.clean_files[self.src_lang + lex]
+            trg_file = self.clean_files[self.trg_lang + lex]
 
         src_vocab, _ = self.init_vocab(self.src_lang)
         trg_vocab, _ = self.init_vocab(self.trg_lang)
 
-        joint_file = self.ids_files[mode]
-        joint_length_file = self.length_files[mode]
+        joint_file = self.ids_files[mode + lex]
+        joint_length_file = self.length_files[mode + lex]
 
         msg = 'Parallel convert tokens from {} & {} to ids and save to {}'.format(src_file, trg_file, joint_file)
         msg += '\nAlso save the total data length to {}'.format(joint_length_file)
@@ -308,12 +326,15 @@ class DataManager(object):
     def get_batch(self, mode=ac.TRAINING, num_batches=1000):
         with tf.device('/cpu:0'):
             ids_file = self.ids_files[mode]
+            ids_file_lex = None
             batch_size = self.batch_size if mode == ac.TRAINING else 1
             shuffle = mode == ac.TRAINING
             if shuffle:
+                ids_file_lex = self.ids_files[mode + 'lex']
                 # First we shuffle training data
                 start = time.time()
                 ut.shuffle_file(ids_file)
+                ut.shuffle_file(ids_file_lex)
                 self.logger.info('Shuffling {} takes {} seconds'.format(ids_file, time.time() - start))
 
             batch_num = 0
@@ -326,7 +347,22 @@ class DataManager(object):
                     batches = self.process_n_batches(next_n_lines, mode=mode)
                     for batch_data in izip(*batches):
                         batch_num += 1
-                        yield batch_num, batch_data
+                        if shuffle:
+                            yield (batch_num, False), batch_data
+                        else:
+                            yield batch_num, batch_data
+
+            if shuffle:
+                with open(ids_file_lex, 'r', 'utf-8') as f:
+                    while True:
+                        next_n_lines = list(islice(f, num_batches * batch_size))
+                        if not next_n_lines:
+                            break
+
+                        batches = self.process_n_batches(next_n_lines, mode=mode)
+                        for batch_data in izip(*batches):
+                            batch_num += 1
+                            yield (batch_num, True), batch_data
 
     def get_trans_input(self, input_file):
         src_vocab, _ = self.init_vocab(self.src_lang)

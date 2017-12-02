@@ -5,25 +5,25 @@ import os
 import sys
 import nmt.all_constants as ac
 
-def dl2el():
+def de2en_bp():
     config = {}
-    config['model_name']        = 'dl2el'
+    config['model_name']        = 'de2en_bp'
     config['save_to']           = './nmt/saved_models/{}'.format(config['model_name'])
-    config['src_lang']          = 'dl'
-    config['trg_lang']          = 'el'
-    config['data_dir']          = './nmt/data/dl2el'
+    config['src_lang']          = 'de'
+    config['trg_lang']          = 'en'
+    config['data_dir']          = './nmt/data/de2en_bp'
     config['log_file']          = './nmt/DEBUG.log'
     config['rnn_type']          = ac.LSTM
     config['batch_size']        = 64
     config['num_layers']        = 1
-    config['enc_rnn_size']      = 400
-    config['dec_rnn_size']      = 400
-    config['src_embed_size']    = 400
-    config['trg_embed_size']    = 400
+    config['enc_rnn_size']      = 64
+    config['dec_rnn_size']      = 64
+    config['src_embed_size']    = 64
+    config['trg_embed_size']    = 64
     config['max_src_length']    = 50
     config['max_trg_length']    = 50
     config['init_range']        = 0.01
-    config['max_epochs']        = 20
+    config['max_epochs']        = 1
     config['embed_norm']        = 3.5
     config['lr']                = 1.0
     config['lr_decay']          = 0.5
@@ -37,8 +37,8 @@ def dl2el():
     config['score_func_type']   = ac.SCORE_FUNC_GEN
     config['feed_input']        = True
     config['reload']            = True
-    config['validate_freq']     = 7000
-    config['save_freq']         = 5000
+    config['validate_freq']     = 3000
+    config['save_freq']         = 3000
     config['beam_size']         = 12
     config['beam_alpha']        = 0.8
     config['n_best']            = 1

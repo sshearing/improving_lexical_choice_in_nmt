@@ -180,7 +180,11 @@ class Model(object):
             else:
                 optimizer = tf.train.GradientDescentOptimizer(self.lr)
 
+            lex_tvars = [tvars[index] for index in [3,4,7,8]]
+            lex_grads = [grads[index] for index in [3,4,7,8]]
+
             self.train_op = optimizer.apply_gradients(zip(grads, tvars))
+            self.train_op_lex = optimizer.apply_gradients(zip(lex_grads, lex_tvars))
 
             # We don't normalize src embeds, we just give it initial norm of embed_norm
             self.normalize_src_embeds = tf.assign(self.src_embedding, project_embeds(self.src_embedding, 1))
